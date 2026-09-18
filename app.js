@@ -189,6 +189,20 @@
     } catch { notify('Не удалось загрузить файл. Выберите JSON-файл, сохранённый кнопкой «Сохранить прогресс в файл» в этом курсе.'); }
     event.target.value = '';
   };
+  $('#reset').onclick = () => {
+    if (!done.size) { notify('Отметок пока нет — курс и так в начале.'); return; }
+    if (!confirm('Снять отметки со всех занятий? Курс вернётся к началу.')) return;
+    done.clear();
+    last = null;
+    write('lp_done', []);
+    write('lp_last', null);
+    update();
+    notify('Все отметки сняты. Курс начнётся заново.');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  };
+  const toTop = $('#to-top');
+  toTop.onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+  window.addEventListener('scroll', () => { toTop.hidden = window.scrollY < 500; }, {passive: true});
   function networkStatus() { $('#offline').hidden = navigator.onLine; }
   window.addEventListener('online', networkStatus);
   window.addEventListener('offline', networkStatus);
