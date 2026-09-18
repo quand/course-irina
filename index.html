@@ -11,9 +11,9 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
-<link rel="stylesheet" href="app.css?v=3">
+<link rel="stylesheet" href="app.css?v=4">
 <script src="videos.js" defer></script>
-<script src="app.js?v=3" defer></script>
+<script src="app.js?v=4" defer></script>
 <script src="auth-config.js?v=2" defer></script>
 <script src="auth.js?v=1" defer></script>
 </head>
@@ -73,8 +73,13 @@
       <input id="import-file" type="file" accept="application/json,.json" hidden>
     </div>
   </details>
+  <div class="reset">
+    <p class="hint">«Завершить курс» снимает отметки со всех занятий: курс вернётся к началу. Текущие отметки можно сначала сохранить в файл.</p>
+    <button id="reset" class="button">Завершить курс</button>
+  </div>
   <p><a href="yandex/">Версия для Яндекс Диска →</a></p>
 </section>
+<button id="to-top" hidden aria-label="Наверх" title="Наверх">↑</button>
 <footer>Видео: Google Drive · Отметки прохождения сохраняются на устройстве</footer>
 <dialog id="player" aria-labelledby="pt">
   <div class="modal">
