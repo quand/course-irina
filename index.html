@@ -11,15 +11,36 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
-<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="app.css?v=3">
 <script src="videos.js" defer></script>
-<script src="app.js?v=2" defer></script>
+<script src="app.js?v=3" defer></script>
+<script src="auth-config.js?v=1" defer></script>
+<script src="auth.js?v=1" defer></script>
 </head>
 <body data-provider="google">
+<section id="login-screen" class="login-screen" aria-labelledby="login-title">
+  <form id="login-form" class="login-card">
+    <p class="eyebrow">Личный курс</p>
+    <h1 id="login-title">С возвращением</h1>
+    <p class="hint">Войдите, чтобы продолжить занятия.</p>
+    <label for="login-name">Логин</label>
+    <input id="login-name" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+    <label for="login-password">Пароль</label>
+    <div class="password-field">
+      <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+      <button id="show-password" class="button" type="button" aria-controls="login-password" aria-pressed="false">Показать</button>
+    </div>
+    <label class="remember"><input id="remember-login" type="checkbox" checked> Запомнить на этом устройстве</label>
+    <p id="login-error" class="login-error" role="alert" hidden></p>
+    <button id="login-submit" class="button primary" type="submit">Войти в курс</button>
+  </form>
+</section>
+<div id="course-app" hidden>
 <header>
   <p class="eyebrow">Личный курс · Google Drive</p>
   <h1 id="ct">Восстановление после родов</h1>
   <p class="lead" id="cl"></p>
+  <button id="logout" class="button logout" type="button">Выйти</button>
 </header>
 <section class="intro" aria-label="Ваш прогресс">
   <div class="resume">
@@ -76,6 +97,7 @@
     </div>
   </div>
 </dialog>
+</div>
 <noscript><p class="intro">Для просмотра списка занятий включите JavaScript в настройках браузера.</p></noscript>
 </body>
 </html>
