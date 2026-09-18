@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#a4576f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Курс">
+<title>Восстановление после родов · Google Drive</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="icons/icon.svg">
+<link rel="stylesheet" href="app.css">
+<script src="videos.js" defer></script>
+<script src="app.js?v=2" defer></script>
+</head>
+<body data-provider="google">
+<header>
+  <p class="eyebrow">Личный курс · Google Drive</p>
+  <h1 id="ct">Восстановление после родов</h1>
+  <p class="lead" id="cl"></p>
+</header>
+<section class="intro" aria-label="Ваш прогресс">
+  <div class="resume">
+    <p id="progress-text">Ваш путь к восстановлению</p>
+    <progress id="progress" value="0" max="98" aria-label="Пройдено уроков"></progress>
+    <p id="resume-text"></p>
+    <button class="button primary" id="resume">Начать курс</button>
+  </div>
+  <p id="notice" class="notice" role="status" hidden></p>
+  <p id="offline" class="notice" role="status" hidden>Нет подключения к интернету. Для просмотра видео нужно подключиться к сети.</p>
+  <nav aria-label="Недели курса" id="weeks"></nav>
+</section>
+<div class="bar">
+  <label class="sr-only" for="q">Поиск по названию урока</label>
+  <input id="q" type="search" placeholder="Поиск по названию урока…">
+  <div class="stats" aria-live="polite"><span id="done">0</span>/<span id="total">98</span> пройдено</div>
+</div>
+<main id="root"></main>
+<p id="empty" class="intro" hidden>Ничего не найдено. Попробуйте другое название.</p>
+<section class="tools" aria-label="Настройки курса">
+  <details id="install"><summary>Добавить курс на экран iPad</summary>
+    <p>Откройте этот адрес в Safari → «Поделиться» → «На экран Домой». Если есть переключатель «Открывать как веб-приложение», включите его, затем нажмите «Добавить».</p>
+    <p class="hint">Видео требуют интернета. Добавление иконки не скачивает видео на iPad.</p>
+  </details>
+  <details><summary>Сохранить или перенести прогресс</summary>
+    <p class="hint">Отметки сохраняются в этом браузере. Чтобы перенести их на другое устройство или в другую версию курса, сохраните файл и загрузите его там. При загрузке отметки объединяются.</p>
+    <div class="row">
+      <button id="export" class="button">Сохранить прогресс в файл</button>
+      <button id="import" class="button">Загрузить прогресс из файла</button>
+      <input id="import-file" type="file" accept="application/json,.json" hidden>
+    </div>
+  </details>
+  <p><a href="yandex/">Версия для Яндекс Диска →</a></p>
+</section>
+<footer>Видео: Google Drive · Отметки прохождения сохраняются на устройстве</footer>
+<dialog id="player" aria-labelledby="pt">
+  <div class="modal">
+    <p id="place" class="hint"></p>
+    <h2 id="pt"></h2>
+    <div class="frame-wrap" id="frame-wrap" hidden>
+      <iframe id="pf" title="Видео занятия" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+    <div class="placeholder" id="ph"></div>
+    <a id="external" class="button primary" target="_blank" rel="noopener noreferrer" hidden>Открыть видео в Google Drive ↗</a>
+    <div id="google-alternatives" class="row" hidden>
+      <a id="drive-folder" class="button" target="_blank" rel="noopener noreferrer" hidden>Открыть папку курса</a>
+      <a id="download-video" class="button" target="_blank" rel="noopener noreferrer" hidden>Скачать видео</a>
+    </div>
+    <p id="player-help" class="hint"></p>
+    <div class="row">
+      <button id="pdone">✓ Пройдено</button>
+      <button id="next">Следующий урок →</button>
+      <button id="pclose" autofocus>Закрыть</button>
+    </div>
+  </div>
+</dialog>
+<noscript><p class="intro">Для просмотра списка занятий включите JavaScript в настройках браузера.</p></noscript>
+</body>
+</html>
