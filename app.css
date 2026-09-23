@@ -92,9 +92,10 @@
   .lesson .t b { overflow-wrap: anywhere; }
   .check { width: 44px; height: 44px; min-width: 44px; }
   .check.on::after { font-size: 20px; }
-  dialog { width: min(94vw, 760px); max-height: 92vh; max-height: 92dvh; overflow-y: auto; }
-  .frame-wrap { padding-top: 0; flex: 0 1 auto; width: 100%; aspect-ratio: 16 / 9; min-height: 160px; }
-  .frame-wrap.vertical { flex: 0 1 auto; width: auto; align-self: center; aspect-ratio: 9 / 16; height: min(60vh, 60dvh); min-height: 240px; }
+  dialog { width: min(94vw, 900px); max-height: 92vh; max-height: 92dvh; overflow-y: auto; }
+  .frame-wrap { padding-top: 0; flex: 0 1 auto; width: min(100%, calc(min(56vh, 56dvh) * 16 / 9)); align-self: center; aspect-ratio: 16 / 9; min-height: 160px; }
+  .frame-wrap.vertical { width: auto; aspect-ratio: 9 / 16; height: min(65vh, 65dvh); min-height: 240px; }
+  .frame-wrap:fullscreen, .frame-wrap:-webkit-full-screen { width: 100%; height: 100%; border-radius: 0; }
   .placeholder { position: static; min-height: 180px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--bg); flex: 1 1 auto; }
   .modal .row { flex-wrap: wrap; }
   .modal .row button { flex: 1 1 130px; }
