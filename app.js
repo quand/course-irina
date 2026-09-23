@@ -181,6 +181,7 @@
       if (fsActive()) fsExit().call(document);
       else (fsTarget.requestFullscreen || fsTarget.webkitRequestFullscreen).call(fsTarget);
     };
+    $('#fs-exit').onclick = () => { if (fsActive()) fsExit().call(document); };
     $('#player').addEventListener('close', () => { if (fsActive()) fsExit().call(document); });
   }
   $('#pclose').onclick = () => { $('#pf').src = 'about:blank'; $('#player').close(); };
