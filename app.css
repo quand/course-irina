@@ -40,10 +40,17 @@
   dialog { border: none; border-radius: 18px; padding: 0; background: var(--card); color: var(--ink);
            width: min(94vw, 480px); max-width: 94vw; }
   dialog::backdrop { background: rgba(0,0,0,0.55); }
-  .modal { padding: 14px 14px 16px; }
+  .modal { padding: 14px 14px 16px; display: flex; flex-direction: column; flex: 1 0 auto; }
   .modal h4 { margin: 2px 6px 10px; font-size: 16px; }
   .frame-wrap { position: relative; padding-top: 100%; border-radius: 12px; overflow: hidden; background: #000; }
   .frame-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .player-loading { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); }
+  .player-loading .spinner { width: 44px; height: 44px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.3); border-top-color: #fff; animation: player-spin .9s linear infinite; }
+  @keyframes player-spin { to { transform: rotate(1turn); } }
+  @media (prefers-reduced-motion: reduce) {
+    .player-loading .spinner { animation: player-pulse 1.2s ease-in-out infinite alternate; }
+    @keyframes player-pulse { from { opacity: 1; } to { opacity: .4; } }
+  }
   .placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 8px;
                  align-items: center; justify-content: center; color: #cfc8bd; font-size: 14px;
                  text-align: center; padding: 20px; }
@@ -85,9 +92,9 @@
   .lesson .t b { overflow-wrap: anywhere; }
   .check { width: 44px; height: 44px; min-width: 44px; }
   .check.on::after { font-size: 20px; }
-  dialog { width: min(94vw, 760px); max-height: 92vh; max-height: 92dvh; overflow-y: auto; }
-  .frame-wrap { padding-top: 0; aspect-ratio: 4 / 3; max-height: 60vh; }
-  .placeholder { position: static; min-height: 180px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--bg); }
+  dialog { width: min(94vw, 760px); height: min(92vh, 860px); height: min(92dvh, 860px); display: flex; flex-direction: column; overflow-y: auto; }
+  .frame-wrap { padding-top: 0; flex: 1 1 220px; min-height: 220px; }
+  .placeholder { position: static; min-height: 180px; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); background: var(--bg); flex: 1 1 auto; }
   .modal .row { flex-wrap: wrap; }
   .modal .row button { flex: 1 1 130px; }
   #external { display: flex; margin-top: 12px; }

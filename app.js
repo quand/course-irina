@@ -125,10 +125,11 @@
     const video = COURSE.videos[lesson.embed];
     const driveId = typeof video.driveId === 'string' && /^[A-Za-z0-9_-]+$/.test(video.driveId) ? video.driveId : null;
     const url = yandex ? yandexLink(video.yandexUrl) : driveId ? `https://drive.google.com/file/d/${driveId}/view` : null;
+    const embed = !yandex && !!url;
     $('#pt').textContent = lesson.title;
     $('#place').textContent = locationLabel(lesson);
-    $('#pf').src = 'about:blank';
-    $('#frame-wrap').hidden = yandex || !url;
+    $('#pf').src = embed ? `https://drive.google.com/file/d/${driveId}/preview` : 'about:blank';
+    $('#frame-wrap').hidden = !embed;
     $('#ph').hidden = !yandex && !!url;
     $('#external').hidden = !url;
     $('#external').removeAttribute('href');
@@ -148,17 +149,28 @@
         }
       } catch { /* A folder link is optional. */ }
     }
-    if (!yandex && url) $('#pf').src = `https://drive.google.com/file/d/${driveId}/preview`;
     $('#ph').textContent = !url ? `Видео пока не подключено. Ссылка на занятие появится после добавления видео ${provider}.` : 'Откройте видео на Яндекс Диске кнопкой ниже. После просмотра вернитесь в курс и отметьте занятие пройденным.';
     $('#player-help').textContent = yandex ? 'Видео откроется отдельно. Курс сохранит выбранное занятие; отметка о прохождении ставится вручную.' : 'Если видео не запускается, откройте папку курса и выберите файл или скачайте его для просмотра на устройстве. Имя файла: ' + lesson.embed + '.mp4. Отметка о прохождении ставится вручную.';
-    $('#next').disabled = lessons.indexOf(lesson) === lessons.length - 1;
+    clearTimeout(loadTimer);
+    setBusy(embed);
+    if (embed) loadTimer = setTimeout(() => setBusy(false), 20000);
     update();
     if (!$('#player').open) $('#player').showModal();
   }
   $('#resume').onclick = () => { const lesson = resumeLesson(); if (lesson) openPlayer(lesson); };
   $('#q').oninput = filter;
   $('#pdone').onclick = () => { if (current) toggleDone(current.lesson); };
+  $('#prev').onclick = () => { const prev = lessons[lessons.indexOf(current) - 1]; if (prev) openPlayer(prev); };
   $('#next').onclick = () => { const next = lessons[lessons.indexOf(current) + 1]; if (next) openPlayer(next); };
+  const frame = $('#pf');
+  let loadTimer = 0;
+  function setBusy(busy) {
+    $('#player-loading').hidden = !busy;
+    const idx = current ? lessons.indexOf(current) : -1;
+    $('#prev').disabled = busy || idx <= 0;
+    $('#next').disabled = busy || idx < 0 || idx >= lessons.length - 1;
+  }
+  frame.addEventListener('load', () => { clearTimeout(loadTimer); setBusy(false); });
   $('#pclose').onclick = () => { $('#pf').src = 'about:blank'; $('#player').close(); };
   $('#player').addEventListener('close', () => { $('#pf').src = 'about:blank'; current = null; });
   $('#export').onclick = () => {
