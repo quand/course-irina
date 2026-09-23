@@ -147,18 +147,21 @@ const COURSE = {
    "yandexUrl": ""
   },
   "j8pTfkDLErm5EhwqoECTcQ": {
+   "vert": true,
    "title": "Заключение",
    "count": 1,
    "driveId": "1x-DdK-vwEnjNnJKUIh17GQ4HYYu7emUw",
    "yandexUrl": ""
   },
   "5FD8qtbahZRjw5QVC2m1Hu": {
+   "vert": true,
    "title": "Приветствие",
    "count": 1,
    "driveId": "1DeL7LkJT_vkdU9q-P3Vh610prcgqtchG",
    "yandexUrl": ""
   },
   "czjuCaEuF4WgQq1g8Pb4jG": {
+   "vert": true,
    "title": "Стартовая точка",
    "count": 1,
    "driveId": "16yojrLMYzYBcQy3vpBXTjuTgB6tn71Yj",
@@ -171,6 +174,7 @@ const COURSE = {
    "yandexUrl": ""
   },
   "g6Z9aZ8c8Hb1xVB7j2GRXg": {
+   "vert": true,
    "title": "Тест на слабость тазовых мышц",
    "count": 1,
    "driveId": "1uABuIDTYjL039QgNeSQEyQ5d01cnSynL",

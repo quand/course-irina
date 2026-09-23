@@ -130,6 +130,7 @@
     $('#place').textContent = locationLabel(lesson);
     $('#pf').src = embed ? `https://drive.google.com/file/d/${driveId}/preview` : 'about:blank';
     $('#frame-wrap').hidden = !embed;
+    $('#frame-wrap').classList.toggle('vertical', !!video.vert);
     $('#ph').hidden = !yandex && !!url;
     $('#external').hidden = !url;
     $('#external').removeAttribute('href');
