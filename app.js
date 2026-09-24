@@ -130,7 +130,6 @@
     $('#place').textContent = locationLabel(lesson);
     $('#pf').src = embed ? `https://drive.google.com/file/d/${driveId}/preview` : 'about:blank';
     $('#frame-wrap').hidden = !embed;
-    $('#frame-wrap').classList.toggle('vertical', !!video.vert);
     $('#ph').hidden = !yandex && !!url;
     $('#external').hidden = !url;
     $('#external').removeAttribute('href');
@@ -172,18 +171,6 @@
     $('#next').disabled = busy || idx < 0 || idx >= lessons.length - 1;
   }
   frame.addEventListener('load', () => { clearTimeout(loadTimer); setBusy(false); });
-  const fsTarget = $('#frame-wrap');
-  const fsActive = () => document.fullscreenElement || document.webkitFullscreenElement;
-  const fsExit = () => document.exitFullscreen || document.webkitExitFullscreen;
-  if (fsTarget.requestFullscreen || fsTarget.webkitRequestFullscreen) {
-    $('#pfs').hidden = false;
-    $('#pfs').onclick = () => {
-      if (fsActive()) fsExit().call(document);
-      else (fsTarget.requestFullscreen || fsTarget.webkitRequestFullscreen).call(fsTarget);
-    };
-    $('#fs-exit').onclick = () => { if (fsActive()) fsExit().call(document); };
-    $('#player').addEventListener('close', () => { if (fsActive()) fsExit().call(document); });
-  }
   $('#pclose').onclick = () => { $('#pf').src = 'about:blank'; $('#player').close(); };
   $('#player').addEventListener('close', () => { $('#pf').src = 'about:blank'; current = null; });
   $('#export').onclick = () => {

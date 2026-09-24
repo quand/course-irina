@@ -11,9 +11,9 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
 <link rel="icon" type="image/svg+xml" href="icons/icon.svg">
-<link rel="stylesheet" href="app.css?v=8">
+<link rel="stylesheet" href="app.css?v=9">
 <script src="videos.js?v=6" defer></script>
-<script src="app.js?v=8" defer></script>
+<script src="app.js?v=9" defer></script>
 <script src="auth-config.js?v=2" defer></script>
 <script src="auth.js?v=1" defer></script>
 </head>
@@ -87,7 +87,6 @@
     <h2 id="pt"></h2>
     <div class="frame-wrap" id="frame-wrap" hidden>
       <iframe id="pf" title="Видео занятия" allow="autoplay; fullscreen" allowfullscreen></iframe>
-      <button id="fs-exit" class="fs-exit" type="button" aria-label="Выйти из полного экрана">✕</button>
       <div id="player-loading" class="player-loading" hidden><span class="spinner" aria-hidden="true"></span><span class="sr-only">Загрузка видео…</span></div>
     </div>
     <div class="placeholder" id="ph"></div>
@@ -101,7 +100,6 @@
       <button id="prev" disabled>← Предыдущий урок</button>
       <button id="pdone">✓ Пройдено</button>
       <button id="next">Следующий урок →</button>
-      <button id="pfs" hidden>Во весь экран</button>
       <button id="pclose" autofocus>Закрыть</button>
     </div>
   </div>
